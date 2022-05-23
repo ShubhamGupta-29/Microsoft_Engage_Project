@@ -16,6 +16,21 @@ with open(r'titles.json', 'r+', encoding='utf-8') as f:
 
 
 
+  
+
+
+
+img1 = Image.open('./engage_logo.jpg')
+img1 = img1.resize((900,80),)
+st.image(img1,use_column_width=False)
+img2 = Image.open('./heading_poster.jpg')
+img2 = img2.resize((900,150),)
+st.image(img2,use_column_width=False)
+st.text("")
+st.text("")
+
+
+
 def movie_poster_fetcher(imdb_link):
     ## Display Movie Poster
     url_data = requests.get(imdb_link).text
@@ -52,6 +67,9 @@ def get_movie_info(imdb_link):
     movie_rating = 'Total Rating count: '+ rating
     return movie_director,movie_cast,movie_story,movie_rating
 
+
+
+
 def knn(test_point, k):
     # Create dummy target variable for the KNN Classifier
     target = [0 for item in movie_titles]
@@ -69,61 +87,74 @@ def knn(test_point, k):
     return table
 
 if __name__ == '__main__':
+    
     genres = ['Action', 'Adventure', 'Animation', 'Biography', 'Comedy', 'Crime', 'Documentary', 'Drama', 'Family',
               'Fantasy', 'Film-Noir', 'Game-Show', 'History', 'Horror', 'Music', 'Musical', 'Mystery', 'News',
               'Reality-TV', 'Romance', 'Sci-Fi', 'Short', 'Sport', 'Thriller', 'War', 'Western']
 
     movies = [title[0] for title in movie_titles]
-    st.header('Movie Recommendation System') 
+    st.header('Movie Recommendation System')   
+    
     apps = ['--Select--', 'Movie based', 'Genres based']   
     app_options = st.selectbox('Select application:', apps)
     
     if app_options == 'Movie based':
+        
         movie_select = st.selectbox('Select movie:', ['--Select--'] + movies)
         if movie_select == '--Select--':
             st.write('Select a movie')
         else:
             n = st.number_input('Number of movies:', min_value=5, max_value=20, step=1)
+            st.markdown('''<h4 style='text-align: left; color: #d73b5c;'>* Fetching a Movie Posters or information will take a time."</h4>''',
+                    unsafe_allow_html=True) 
             dec = st.radio("Want to Fetch Movie Poster?", ('No', 'Yes'))
-            st.markdown('''<h4 style='text-align: left; color: #d73b5c;'>* Fetching a Movie Posters will take a time."</h4>''',
-                    unsafe_allow_html=True)
+            fec = st.radio("Want to Fetch Movie Information?", ('No', 'Yes'))
+            st.text("")
+            st.text("")
+
             genres = data[movies.index(movie_select)]
             test_point = genres
             table = knn(test_point, n)
             for movie, link in table:
                 # Displays movie title with link to imdb
                 st.markdown(f"[{movie}]({link})")
+                
                 if dec == 'Yes':
                  movie_poster_fetcher(link)
-
-                director,cast,story,total_rat = get_movie_info(link)
-                st.markdown(director)
-                st.markdown(cast)
-                st.markdown(story)
-                st.markdown(total_rat)
+                if fec=='Yes': 
+                 director,cast,story,total_rat = get_movie_info(link)
+                 st.markdown(director)
+                 st.markdown(cast)
+                 st.markdown(story)
+                 st.markdown(total_rat)
 
     elif app_options == apps[2]:
         options = st.multiselect('Select genres:', genres)
         if options:
             imdb_score = st.slider('IMDb score:', 1, 10, 8)
             n = st.number_input('Number of movies:', min_value=5, max_value=20, step=1)
-            dec = st.radio("Want to Fetch Movie Poster?", ('Yes', 'No'))
-            st.markdown('''<h4 style='text-align: left; color: #d73b5c;'>* Fetching a Movie Posters will take a time."</h4>''',
-                    unsafe_allow_html=True)
+            st.markdown('''<h4 style='text-align: left; color: #d73b5c;'>* Fetching a Movie Poster and Information will take a time."</h4>''',
+                    unsafe_allow_html=True) 
+            dec = st.radio("Want to Fetch Movie Poster?", ('No', 'Yes'))
+            fec = st.radio("Want to Fetch Movie Information?", ('No', 'Yes'))
+            st.text("")
+            st.text("")
+            
             test_point = [1 if genre in options else 0 for genre in genres]
             test_point.append(imdb_score)
             table = knn(test_point, n)
             for movie, link in table:
                 # Displays movie title with link to imdb
                 st.markdown(f"[{movie}]({link})")
+                
                 if dec == 'Yes':
                  movie_poster_fetcher(link)
-                
-                director,cast,story,total_rat = get_movie_info(link)
-                st.markdown(director)
-                st.markdown(cast)
-                st.markdown(story)
-                st.markdown(total_rat)
+                if fec=='Yes': 
+                 director,cast,story,total_rat = get_movie_info(link)
+                 st.markdown(director)
+                 st.markdown(cast)
+                 st.markdown(story)
+                 st.markdown(total_rat)
                 # st.markdown('IMDB Rating: ' + irating + '⭐')
 
         else:
@@ -132,3 +163,19 @@ if __name__ == '__main__':
 
     else:
         st.write('Select option')
+
+
+    
+    st.text("")
+    st.text("")
+    st.text("")  
+    st.text("") 
+    st.markdown('''<h5 style='text-align: left; color: #E8FF2B;'>Made by Shubham Gupta</h5>''',
+                    unsafe_allow_html=True) 
+    st.markdown('''<h6 style='text-align: left; color: #E8FF2B;'>shubham.gupta29062002@gmail.com</h6>''',
+                    unsafe_allow_html=True) 
+    st.markdown('''<h6 style='text-align: left; color: #E8FF2B;'>github.com/ShubhamGupta-29/Microsoft_Engage_Project</h6>''',
+                    unsafe_allow_html=True) 
+
+
+ 
