@@ -97,6 +97,7 @@ if __name__ == '__main__':
     
     apps = ['--Select--', 'Movie based', 'Genres based']   
     app_options = st.selectbox('Select application:', apps)
+    st.warning('Please select Recommendation Type!!')
     
     if app_options == 'Movie based':
         
@@ -115,6 +116,7 @@ if __name__ == '__main__':
             genres = data[movies.index(movie_select)]
             test_point = genres
             table = knn(test_point, n)
+            st.success('Some of the movies from our Recommendation, have a look below')
             for movie, link in table:
                 # Displays movie title with link to imdb
                 st.markdown(f"[{movie}]({link})")
@@ -143,6 +145,7 @@ if __name__ == '__main__':
             test_point = [1 if genre in options else 0 for genre in genres]
             test_point.append(imdb_score)
             table = knn(test_point, n)
+            st.success('Some of the movies from our Recommendation, have a look below')
             for movie, link in table:
                 # Displays movie title with link to imdb
                 st.markdown(f"[{movie}]({link})")
@@ -162,13 +165,12 @@ if __name__ == '__main__':
                         "You can select the genres and change the IMDb score.")
 
     else:
-        st.write('Select option')
+        st.write('')
 
 
     
-    st.text("")
-    st.text("")
-    st.text("")  
+    
+     
     st.text("") 
     st.markdown('''<h5 style='text-align: left; color: #E8FF2B;'>Made by Shubham Gupta</h5>''',
                     unsafe_allow_html=True) 
