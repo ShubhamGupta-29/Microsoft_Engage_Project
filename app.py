@@ -21,10 +21,10 @@ with open(r'titles.json', 'r+', encoding='utf-8') as f:
 
 
 img1 = Image.open('./engage_logo.jpg')
-img1 = img1.resize((900,80),)
+img1 = img1.resize((700,70),)
 st.image(img1,use_column_width=False)
 img2 = Image.open('./heading_poster.jpg')
-img2 = img2.resize((900,150),)
+img2 = img2.resize((700,140),)
 st.image(img2,use_column_width=False)
 st.text("")
 st.text("")
