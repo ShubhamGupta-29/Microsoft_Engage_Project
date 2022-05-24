@@ -172,11 +172,11 @@ if __name__ == '__main__':
     
      
     st.text("") 
-    st.markdown('''<h5 style='text-align: left; color: #21E4E1;'>Made by Shubham Gupta</h5>''',
+    st.markdown('''<h5 style='text-align: left; color: #E8FF2B;'>Made by Shubham Gupta</h5>''',
                     unsafe_allow_html=True) 
-    st.markdown('''<h6 style='text-align: left; color: #21E4E1;'>shubham.gupta29062002@gmail.com</h6>''',
+    st.markdown('''<h6 style='text-align: left; color: #E8FF2B;'>shubham.gupta29062002@gmail.com</h6>''',
                     unsafe_allow_html=True) 
-    st.markdown('''<h6 style='text-align: left; color: #21E4E1;'>github.com/ShubhamGupta-29/Microsoft_Engage_Project</h6>''',
+    st.markdown('''<h6 style='text-align: left; color: #E8FF2B;'>github.com/ShubhamGupta-29/Microsoft_Engage_Project</h6>''',
                     unsafe_allow_html=True) 
 
 
