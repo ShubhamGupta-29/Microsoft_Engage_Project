@@ -50,3 +50,11 @@ Used the 5000 movie meta dataset for the results and search.
 ### Movie based Recommendation
 <img src="https://github.com/ShubhamGupta-29/Microsoft_Engage_Project/blob/main/readme_imgs/readme1.jpg">
 
+## Timeline for this Project
+<img src="https://github.com/ShubhamGupta-29/Microsoft_Engage_Project/blob/main/readme_imgs/readme4.JPG">
+
+## Video demo link
+https://drive.google.com/file/d/1c34_EP2yTrB7FUG0I1eF3pKbtdxhwa94/view?usp=sharing
+
+
+
