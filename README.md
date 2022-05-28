@@ -12,7 +12,7 @@
 - `App.py` is the main Python file of Streamlit Web-Application. 
 - To run app, write following command in CMD. or use any IDE.
   ```
-  streamlit run App.py
+  streamlit run app.py
   ```
 - `Data.ipynb` is the notebook of data processing.
 - `Classifier.py` is the main file which is containing a KNN Algorithm.
